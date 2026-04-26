@@ -21,14 +21,12 @@ app = FastAPI(
     redoc_url=None,  # Disable ReDoc in production
 )
 
-# 2. CORS Setup - Allows your frontend to talk to this backend
-ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "http://localhost:8080,http://localhost:5173").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=ALLOWED_ORIGINS,
-    allow_credentials=True,
-    allow_methods=["POST", "GET"],
-    allow_headers=["Content-Type"],
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # 3. Load Brain & LLM
