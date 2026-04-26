@@ -2,8 +2,9 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+// Using hardcoded public keys since these are meant for client-side use and avoids Vercel config
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || "https://iiucmdzndsnelnjvaxkv.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlpdWNtZHpuZHNuZWxuanZheGt2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA0NjAwOTEsImV4cCI6MjA4NjAzNjA5MX0.VVdzoFCr4s4JSJ5Sj-mGNMQ3DwusbPTa7s5sP9huG9A";
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
