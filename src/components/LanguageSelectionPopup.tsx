@@ -27,8 +27,8 @@ const LanguageSelectionPopup = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm animate-fade-in p-4">
-      <Card className="w-full max-w-2xl p-6 bg-white/20 dark:bg-black/40 backdrop-blur-xl border-white/30 shadow-elevated">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 animate-fade-in p-4">
+      <Card className="w-full max-w-2xl p-6 bg-white dark:bg-slate-900 border-border shadow-2xl">
         <div className="flex flex-col items-center mb-6 text-center">
           <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-4">
             <Globe className="w-8 h-8 text-primary" />
@@ -48,8 +48,8 @@ const LanguageSelectionPopup = () => {
               onClick={() => setSelectedLang(lang.code)}
               className={`p-3 rounded-xl border-2 transition-all duration-300 flex flex-col items-center justify-center gap-1 ${
                 selectedLang === lang.code
-                  ? 'border-primary bg-primary/20 shadow-soft scale-105'
-                  : 'border-white/10 hover:border-primary/50 hover:bg-white/10'
+                  ? 'border-primary bg-primary/10 shadow-sm scale-105'
+                  : 'border-border hover:border-primary/50 hover:bg-slate-50 dark:hover:bg-slate-800'
               }`}
             >
               <span className="font-bold text-lg text-foreground">{lang.nativeName}</span>
