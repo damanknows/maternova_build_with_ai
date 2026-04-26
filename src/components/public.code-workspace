@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../public"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../supabase"
+		}
+	],
+	"settings": {
+		"workbench.editor.alwaysShowEditorActions": true
+	}
+}

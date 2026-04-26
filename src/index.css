@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base Colors - Translucent for Liquid Glass */
+    --background: 210 50% 98%;
+    --foreground: 220 50% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 50% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 50% 10%;
+
+    /* Maternova Primary (Sage Teal) */
+    --primary: 175 40% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 90%;
+    --secondary-foreground: 220 50% 30%;
+
+    --muted: 210 20% 92%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 280 60% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 210 20% 85%;
+    --input: 210 20% 85%;
+    --ring: 175 40% 50%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 210 50% 98%;
+    --sidebar-foreground: 220 50% 20%;
+    --sidebar-primary: 175 40% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 30% 90%;
+    --sidebar-accent-foreground: 220 50% 20%;
+    --sidebar-border: 210 20% 85%;
+    --sidebar-ring: 175 40% 50%;
+
+    /* Custom Maternova colors */
+    --sage: 180 40% 55%;
+    --sage-light: 180 30% 90%;
+    --cream: 210 20% 96%;
+    --terracotta: 340 60% 55%;
+    --sky: 200 70% 60%;
+    --lavender: 270 40% 70%;
+    --peach: 25 80% 85%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(175 40% 50%) 0%, hsl(200 40% 55%) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(210 40% 90%) 0%, hsl(280 40% 90%) 100%);
+    --gradient-hero: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    --shadow-card: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    --shadow-elevated: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  }
+
+  .dark {
+    --background: 220 50% 5%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 50% 10%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 50% 10%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 175 40% 45%;
+    --primary-foreground: 220 50% 10%;
+
+    --secondary: 210 30% 20%;
+    --secondary-foreground: 210 50% 90%;
+
+    --muted: 220 20% 18%;
+    --muted-foreground: 210 10% 65%;
+
+    --accent: 280 50% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 60% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 80% 45%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 220 20% 22%;
+    --input: 220 20% 22%;
+    --ring: 175 40% 45%;
+
+    --sidebar-background: 220 50% 8%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 175 40% 45%;
+    --sidebar-primary-foreground: 220 50% 10%;
+    --sidebar-accent: 220 20% 18%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 220 20% 22%;
+    --sidebar-ring: 175 40% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground font-sans antialiased min-h-screen relative overflow-x-hidden;
+    font-family: 'Nunito', sans-serif;
+    /* Dynamic Liquid Background */
+    background: linear-gradient(45deg, hsl(210, 50%, 96%), hsl(175, 50%, 95%), hsl(280, 40%, 97%));
+    background-size: 400% 400%;
+    animation: liquid-gradient 15s ease infinite;
+  }
+
+  .dark body {
+    background: linear-gradient(45deg, hsl(220, 60%, 8%), hsl(180, 60%, 10%), hsl(280, 50%, 10%));
+    background-size: 400% 400%;
+    animation: liquid-gradient 15s ease infinite;
+  }
+
+  /* Animated Blobs for Glass Effect */
+  body::before, body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.6;
+    animation: blob-float 20s infinite alternate;
+    pointer-events: none;
+  }
+
+  body::before {
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, hsl(175, 50%, 85%), transparent 70%);
+    top: -10vw;
+    left: -10vw;
+    animation-delay: 0s;
+  }
+
+  body::after {
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, hsl(280, 70%, 85%), transparent 70%);
+    bottom: -15vw;
+    right: -10vw;
+    animation-delay: -5s;
+  }
+
+  .dark body::before {
+    background: radial-gradient(circle, hsl(180, 70%, 20%), transparent 70%);
+  }
+
+  .dark body::after {
+    background: radial-gradient(circle, hsl(280, 70%, 25%), transparent 70%);
+  }
+
+  @keyframes liquid-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes blob-float {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(5vw, -5vw) scale(1.1); }
+    66% { transform: translate(-3vw, 3vw) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer components {
+  /* Liquid Glass Card Style */
+  .card-healthcare {
+    @apply rounded-2xl p-6 transition-all duration-500 relative overflow-hidden;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  .card-healthcare:hover {
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .card-healthcare {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .dark .card-healthcare:hover {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  /* Force Shadcn UI Cards to use glass effect where appropriate */
+  .bg-card {
+    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-color: rgba(255, 255, 255, 0.6) !important;
+  }
+  
+  .dark .bg-card {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .btn-emergency {
+    @apply bg-destructive/90 backdrop-blur-md text-destructive-foreground font-bold py-4 px-8 rounded-full shadow-[0_8px_32px_rgba(220,38,38,0.3)] animate-pulse hover:animate-none hover:scale-105 hover:bg-destructive transition-all border border-destructive-foreground/20;
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-warm {
+    background: var(--gradient-warm);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Reusable frosted glass panel */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.07);
+  }
+
+  .dark .glass-panel {
+    background: rgba(15, 23, 42, 0.60);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+  }
+
+  /* Subtle glow ring for active/primary elements */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(175 40% 50% / 0.35), 0 8px 32px rgba(31, 38, 135, 0.1);
+  }
+
+  /* Slow bounce for chat FAB */
+  .animate-bounce-slow {
+    animation: bounce-slow 3s ease-in-out infinite;
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* Fade in animation for chat window */
+  .animate-fade-in {
+    animation: fade-in 0.25s ease-out;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: scale(0.97) translateY(8px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+}
