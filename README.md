@@ -21,6 +21,19 @@
 
 In rural India, access to healthcare information and timely intervention is a challenge. **Maternova** bridges this gap by connecting **ASHA workers**, **pregnant women**, **elderly citizens**, and **infant families** to essential health services. Powered by a modern web interface and an intelligent AI assistant, Maternova brings healthcare to the fingertips of those who need it most.
 
+---
+
+## 🌍 UN Sustainable Development Goals (SDGs)
+
+Maternova is built with a core mission to address the following UN SDGs:
+
+- **Goal 3: Good Health and Well-being** 🩺
+  By providing digital portals for maternal care, infant vaccination tracking, and elderly support, Maternova ensures healthy lives and promotes well-being for all at all ages in rural communities.
+- **Goal 10: Reduced Inequalities** 🤝
+  Through full support for **12 Indian regional languages** and an intuitive UI designed for varied digital literacy levels, Maternova reduces healthcare access inequalities for marginalized and rural populations.
+
+---
+
 ## 🔗 Live Links
 
 - **🌐 Frontend App:** [https://maternova.vercel.app](https://maternova.vercel.app)
