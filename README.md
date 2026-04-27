@@ -1,25 +1,64 @@
-# Maternova Healthcare Platform
+<div align="center">
+  <img src="https://maternova.vercel.app/og-preview.png" alt="Maternova Logo" width="100%" />
 
-A digital healthcare platform connecting **ASHA workers**, **pregnant women**, **elderly citizens**, and **infant families** to essential health services across rural India. Powered by a React frontend and a RAG-based AI assistant backed by FastAPI and Google Gemini.
+  <h1>🚀 Maternova Healthcare Platform</h1>
+  
+  <p>
+    <strong>Empowering Rural India through Digital Health & AI</strong>
+  </p>
+
+  <p>
+    <a href="https://maternova.vercel.app"><img src="https://img.shields.io/badge/Live_Demo-Frontend-00C7B7?style=for-the-badge&logo=vercel" alt="Live Demo" /></a>
+    <a href="https://maternova-build-with-ai-307876886397.asia-south2.run.app/docs"><img src="https://img.shields.io/badge/API_Docs-Backend-FF6F61?style=for-the-badge&logo=fastapi" alt="API Docs" /></a>
+    <img src="https://img.shields.io/badge/Status-Live-success?style=for-the-badge" alt="Status" />
+    <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License" />
+  </p>
+</div>
 
 ---
 
-## ✨ Features
+## 🌟 The Vision
 
-- 🏥 Role-based login for ASHA Workers, Pregnant Women, Elderly, and Infant Families
-- 🚨 Emergency alert system with real-time Supabase sync
-- 💉 Vaccination and Treatment record tracking
-- 🍽️ Meal and Nutrition management
-- 💰 Government funding scheme tracker
-- 🤖 **Maternova AI Assistant** — RAG-powered chatbot with context from the official Maternova website
-- 🌐 Multilingual support (12 Indian languages)
-- 🪟 Premium glassmorphism UI with animated gradient backgrounds
+In rural India, access to healthcare information and timely intervention is a challenge. **Maternova** bridges this gap by connecting **ASHA workers**, **pregnant women**, **elderly citizens**, and **infant families** to essential health services. Powered by a modern web interface and an intelligent AI assistant, Maternova brings healthcare to the fingertips of those who need it most.
+
+## 🔗 Live Links
+
+- **🌐 Frontend App:** [https://maternova.vercel.app](https://maternova.vercel.app)
+- **🤖 AI Backend API:** [https://maternova-build-with-ai-307876886397.asia-south2.run.app/docs](https://maternova-build-with-ai-307876886397.asia-south2.run.app/docs)
 
 ---
 
-## 🗂️ Project Structure
+## ✨ Key Features
 
-```
+- **🏥 Role-Based Access:** Dedicated portals tailored for ASHA Workers, Pregnant Women, Elderly, and Infant Families.
+- **🚨 Emergency Alert System:** Real-time synchronization via Supabase for immediate medical response.
+- **💉 Health Tracking:** Comprehensive dashboards for vaccination schedules and treatment records.
+- **🍽️ Nutrition Management:** Meal planning and nutritional tracking for maternal and infant health.
+- **💰 Funding Tracker:** Access and track government healthcare funding schemes seamlessly.
+- **🤖 Maternova AI Assistant:** A specialized RAG-powered chatbot (backed by Gemini and ChromaDB) providing instant, contextual answers.
+- **🌐 True Multilingual Support:** Accessible in **12 Indian languages** to ensure no one is left behind.
+- **🪟 Liquid Glass UI:** Premium glassmorphism design with animated gradient backgrounds for a stunning user experience.
+
+---
+
+## 💻 Tech Stack
+
+Maternova is built with modern, scalable technologies to ensure high performance and reliability.
+
+| Category | Technologies |
+| :--- | :--- |
+| **Frontend** | React 18, TypeScript, Vite, Tailwind CSS, shadcn/ui |
+| **Backend** | FastAPI, Uvicorn, Python 3.11+ |
+| **AI / NLP** | LangChain, Google Gemini API, ChromaDB (Vector Search) |
+| **Database** | Supabase (PostgreSQL, Authentication, Realtime subscriptions) |
+| **Styling** | Glassmorphism, Animated Gradients, Radix UI Primitives |
+| **Deployment** | Vercel (Frontend), Google Cloud Run (Backend) |
+
+---
+
+## 🗂️ Project Architecture
+
+```text
 maternova/
 ├── src/                  # React frontend (Vite + TypeScript)
 │   ├── components/       # UI components including AiAssistant
@@ -35,74 +74,51 @@ maternova/
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting Started Locally
 
-### 1. Clone the repository
+Want to run Maternova on your own machine? Follow these steps:
 
-```sh
-git clone <YOUR_GIT_URL>
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/maternova.git
 cd maternova
 ```
 
-### 2. Set up environment variables
-
-```sh
+### 2. Environment Configuration
+```bash
 cp .env.example .env
-# Fill in your API keys in .env
+# Open .env and add your Supabase and Gemini API keys.
 ```
 
-### 3. Install frontend dependencies & run
-
-```sh
+### 3. Start the Frontend
+```bash
 npm install
 npm run dev
+# Frontend will be available at http://localhost:8080
 ```
 
-### 4. Install Python backend dependencies & run
-
-```sh
+### 4. Start the AI Backend
+```bash
 pip install -r requirements.txt
 
-# First time only: build the AI knowledge base
+# (First run only) Build the AI Knowledge Base Vector DB:
 python ingest.py
 
-# Start the AI backend
+# Start the FastAPI server:
 python main.py
+# Backend API will be available at http://localhost:8000
 ```
 
-> The frontend runs on `http://localhost:8080` and the AI backend on `http://localhost:8000`.
+---
+
+## 🛡️ Security Best Practices
+
+- All sensitive keys (`.env`) and vector databases (`maternova_db/`) are strictly `.gitignore`d.
+- **CORS Restricted:** Backend only accepts requests from allowed frontend origins.
+- API requests are validated and API keys are never exposed to the client side.
 
 ---
 
-## 🏗️ Production Deployment
-
-### Frontend (e.g. Vercel / Netlify)
-1. Set all `VITE_*` environment variables in your hosting platform.
-2. Set `VITE_API_URL` to your deployed backend URL (e.g. `https://api.maternova.com`).
-3. Run `npm run build` — deploy the `dist/` folder.
-
-### Backend (e.g. Railway / Render / VPS)
-1. Set `GOOGLE_API_KEY` and `ALLOWED_ORIGINS` as environment variables on the server.
-2. Upload `main.py`, `requirements.txt`, and the pre-built `maternova_db/` vector database.
-3. Start with: `uvicorn main:app --host 0.0.0.0 --port 8000`
-
----
-
-## 🛡️ Security Notes
-
-- `.env` is **gitignored** — never commit it.
-- `maternova_db/` is **gitignored** — re-generate on the server by running `python ingest.py`.
-- CORS is restricted to specific origins defined in `ALLOWED_ORIGINS`.
-- The AI backend validates all incoming requests and never exposes raw API keys.
-
----
-
-## 🧰 Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Frontend | React 18, TypeScript, Vite, Tailwind CSS, shadcn/ui |
-| Backend | FastAPI, Uvicorn, Python 3.11+ |
-| AI / RAG | LangChain, Google Gemini, ChromaDB |
-| Database | Supabase (PostgreSQL + Realtime) |
-| Styling | Glassmorphism, Animated Gradients, Radix UI |
+<div align="center">
+  <p>Built with ❤️ to revolutionize rural healthcare.</p>
+</div>
