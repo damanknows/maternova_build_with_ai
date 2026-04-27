@@ -8,7 +8,7 @@
   </p>
 
   <p>
-    <a href="https://maternova.vercel.app"><img src="https://img.shields.io/badge/Live_Demo-Frontend-00C7B7?style=for-the-badge&logo=vercel" alt="Live Demo" /></a>
+    <a href="https://maternova-build-with-ai-m577.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-Frontend-00C7B7?style=for-the-badge&logo=vercel" alt="Live Demo" /></a>
     <a href="https://maternova-build-with-ai-307876886397.asia-south2.run.app/docs"><img src="https://img.shields.io/badge/API_Docs-Backend-FF6F61?style=for-the-badge&logo=fastapi" alt="API Docs" /></a>
     <img src="https://img.shields.io/badge/Status-Live-success?style=for-the-badge" alt="Status" />
     <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License" />
@@ -49,7 +49,7 @@ Maternova is built with a core mission to address the following UN SDGs:
 
 | Resource | URL | Description |
 | :--- | :--- | :--- |
-| **Live Application** | [maternova.vercel.app](https://maternova.vercel.app) | The production frontend application for users. |
+| **Live Application** | [maternova-build-with-ai-m577.vercel.app](https://maternova-build-with-ai-m577.vercel.app/) | The production frontend application for users. |
 | **API Documentation** | [Backend Docs](https://maternova-build-with-ai-307876886397.asia-south2.run.app/docs) | OpenAPI (Swagger) documentation for the AI backend. |
 | **Hackathon Details** | [Solution Challenge 2026](https://hack2skill.com/event/build-with-ai) | Build with AI Google Hackathon page. |
 
