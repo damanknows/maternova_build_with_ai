@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://maternova.vercel.app/og-preview.png" alt="Maternova Logo" width="100%" />
+  <img src="./public/logo.png" alt="Maternova Logo" width="100%" />
 
   <h1>🚀 Maternova Healthcare Platform</h1>
   
