@@ -1,0 +1,51 @@
+name: Build and Deploy to Cloud Run
+
+on:
+  push:
+    branches:
+      - main # Triggers on push to the main branch
+
+env:
+  PROJECT_ID: [YOUR-PROJECT-ID] # TODO: Replace with your GCP Project ID
+  REGION: us-central1
+  REPO_NAME: my-docker-repo # TODO: Replace with your Artifact Registry repository name
+  IMAGE_NAME: my-app
+  SERVICE_NAME: my-cloud-run-service # TODO: Replace with your Cloud Run service name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Authenticate with Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          # You will need to add a GitHub Repository Secret named GCP_CREDENTIALS 
+          # containing your Google Cloud Service Account JSON key.
+          # Alternatively, you can use Workload Identity Federation (recommended for production).
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Build and Push Docker Image via Cloud Build
+        run: |
+          IMAGE_PATH="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO_NAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
+          echo "Building and pushing $IMAGE_PATH"
+          gcloud builds submit --tag $IMAGE_PATH .
+          echo "IMAGE_PATH=$IMAGE_PATH" >> $GITHUB_ENV
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ env.SERVICE_NAME }}
+          region: ${{ env.REGION }}
+          image: ${{ env.IMAGE_PATH }}
+          flags: '--allow-unauthenticated'
+
+      - name: Show Deployment Output
+        run: echo "Deployed successfully! Application is available at ${{ steps.deploy.outputs.url }}"
