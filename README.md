@@ -17,6 +17,17 @@
 
 ---
 
+## 📑 Table of Contents
+- [The Vision](#-the-vision)
+- [UN Sustainable Development Goals (SDGs)](#-un-sustainable-development-goals-sdgs)
+- [Quick Links](#-quick-links)
+- [Key Features](#-key-features)
+- [System Architecture](#-system-architecture)
+- [Tech Stack](#-tech-stack)
+- [Getting Started Locally](#-getting-started-locally)
+
+---
+
 ## 🌟 The Vision
 
 In rural India, access to healthcare information and timely intervention is a challenge. **Maternova** bridges this gap by connecting **ASHA workers**, **pregnant women**, **elderly citizens**, and **infant families** to essential health services. Powered by a modern web interface and an intelligent AI assistant, Maternova brings healthcare to the fingertips of those who need it most.
@@ -34,10 +45,13 @@ Maternova is built with a core mission to address the following UN SDGs:
 
 ---
 
-## 🔗 Live Links
+## 🔗 Quick Links
 
-- **🌐 Frontend App:** [https://maternova.vercel.app](https://maternova.vercel.app)
-- **🤖 AI Backend API:** [https://maternova-build-with-ai-307876886397.asia-south2.run.app/docs](https://maternova-build-with-ai-307876886397.asia-south2.run.app/docs)
+| Resource | URL | Description |
+| :--- | :--- | :--- |
+| **Live Application** | [maternova.vercel.app](https://maternova.vercel.app) | The production frontend application for users. |
+| **API Documentation** | [Backend Docs](https://maternova-build-with-ai-307876886397.asia-south2.run.app/docs) | OpenAPI (Swagger) documentation for the AI backend. |
+| **Hackathon Details** | [Solution Challenge 2026](https://hack2skill.com/event/build-with-ai) | Build with AI Google Hackathon page. |
 
 ---
 
@@ -51,6 +65,19 @@ Maternova is built with a core mission to address the following UN SDGs:
 - **🤖 Maternova AI Assistant:** A specialized RAG-powered chatbot (backed by Gemini and ChromaDB) providing instant, contextual answers.
 - **🌐 True Multilingual Support:** Accessible in **12 Indian languages** to ensure no one is left behind.
 - **🪟 Liquid Glass UI:** Premium glassmorphism design with animated gradient backgrounds for a stunning user experience.
+
+---
+
+## 🏗️ System Architecture
+
+```mermaid
+graph TD
+    Client[Web Browser/Mobile] -->|HTTPS| Frontend[React + Vite Frontend\nHolds UI & State]
+    Frontend -->|REST/WebSockets| Supabase[(Supabase BaaS\nAuth & Realtime DB)]
+    Frontend -->|POST /ask| Backend[FastAPI AI Backend\nGoogle Cloud Run]
+    Backend -->|Similarity Search| ChromaDB[(ChromaDB\nLocal Vector Store)]
+    Backend -->|RAG Prompting| Gemini[Google Gemini API\nLLM Service]
+```
 
 ---
 
@@ -69,48 +96,35 @@ Maternova is built with modern, scalable technologies to ensure high performance
 
 ---
 
-## 🗂️ Project Architecture
-
-```text
-maternova/
-├── src/                  # React frontend (Vite + TypeScript)
-│   ├── components/       # UI components including AiAssistant
-│   ├── hooks/            # Custom Supabase data hooks
-│   ├── context/          # App and Language contexts
-│   └── lib/              # Utilities (error-utils, etc.)
-├── main.py               # FastAPI AI backend (RAG + Gemini)
-├── ingest.py             # Script to build the Maternova vector DB
-├── requirements.txt      # Python backend dependencies
-├── .env.example          # Environment variable template
-└── supabase/             # DB schema and migrations
-```
-
----
-
 ## 🚀 Getting Started Locally
 
-Want to run Maternova on your own machine? Follow these steps:
+### Prerequisites
+- Node.js (v18+)
+- Python 3.11+
+- Supabase Project & Google Gemini API Key
 
-### 1. Clone the Repository
+### Installation
+
+**1. Clone the Repository**
 ```bash
-git clone https://github.com/your-username/maternova.git
-cd maternova
+git clone https://github.com/damanknows/maternova_build_with_ai.git
+cd maternova_build_with_ai
 ```
 
-### 2. Environment Configuration
+**2. Environment Configuration**
 ```bash
 cp .env.example .env
 # Open .env and add your Supabase and Gemini API keys.
 ```
 
-### 3. Start the Frontend
+**3. Start the Frontend**
 ```bash
 npm install
 npm run dev
 # Frontend will be available at http://localhost:8080
 ```
 
-### 4. Start the AI Backend
+**4. Start the AI Backend**
 ```bash
 pip install -r requirements.txt
 
@@ -133,5 +147,5 @@ python main.py
 ---
 
 <div align="center">
-  <p>Built with ❤️ to revolutionize rural healthcare.</p>
+  <p>Built with ❤️ for the <strong>Build with AI Solution Challenge 2026</strong> to revolutionize rural healthcare.</p>
 </div>
